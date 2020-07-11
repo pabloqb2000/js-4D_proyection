@@ -9,7 +9,7 @@ function mousePressed() {
 }
 
 function mouseClicked() {
-    UI.mouseClicked();
+    let r = UI.mouseClicked();
 	Drag.mouseClicked();
 }
 

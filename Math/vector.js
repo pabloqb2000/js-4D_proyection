@@ -228,12 +228,12 @@ class Vector {
     }
 
     /**
-     * Proyects the given vector using this one as
-     * the direction of the proyection line
+     * projects the given vector using this one as
+     * the direction of the projection line
      * 
      * @param v 
      */
-    proyect(v) {
+    project(v) {
         return this.copy().normalize().mult(this.dot(v));
     }
 
@@ -244,7 +244,7 @@ class Vector {
      * @param v 
      */
     reflect(v) {
-        let p = this.proyect(v);
+        let p = this.project(v);
         return p.mult(2).sub(v);
     }
 
@@ -296,6 +296,35 @@ class Vector {
     static random2D() {
         let r = random(2*PI);
         return Vector.fromAngle(r);
+    }
+
+    /**
+     * Rotates this vector (should be 3D)
+     * on the given axis by the given a radians
+     */
+    rotate3D(a, axis=0) {
+        let M = Matrix.identity(3);
+        switch(axis) {
+            case 0:
+                M.set(1,1,cos(a))
+                 .set(1,2,-sin(a))
+                 .set(2,1,sin(a))
+                 .set(2,2,cos(a));
+            break;
+            case 1:
+                M.set(0,0,cos(a))
+                 .set(2,0,-sin(a))
+                 .set(0,2,sin(a))
+                 .set(2,2,cos(a));
+            break;
+            case 2:
+                M.set(0,0,cos(a))
+                 .set(0,1,-sin(a))
+                 .set(1,0,sin(a))
+                 .set(1,1,cos(a));
+            break;
+        }
+        return new Vector(Matrix.mult(M, this.toMatrix()).col(0));
     }
 
     /**
