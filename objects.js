@@ -12,7 +12,7 @@ class PointCloud {
      * @param ptThick Thickness of the points
      */
     constructor(position, points, ptColor=230, ptThick=2) {
-        this.pos = position;
+        this.pos = position; // This position is added in render time
         this.points = points;
         this.ptColor = color(ptColor);
         this.ptThick = ptThick;
@@ -42,6 +42,7 @@ class PointCloud {
 
     /**
      * Rotate all points arround the given axis by a radians
+     * (only work for 3D vectors)
      * 
      * @param a Angle to rotate
      * @param axis Axis to rotate arround
@@ -94,7 +95,7 @@ class SolidObj extends PointCloud {
      * @param ptThick Thickness of the points
      */
     constructor(position, points, polygons, 
-        polColor=[86, 210, 227, 64], lnColor=200, ptColor=230, lnThick=1, ptThick=2) {
+        polColor=[86, 210, 227, 44], lnColor=200, ptColor=230, lnThick=1, ptThick=2) {
             super(position, points, ptColor, ptThick);
             this.polygons = polygons;
             this.polColor = polColor;

@@ -48,6 +48,13 @@ class Vector {
     }
 
     /**
+     * Returns the 4th coordinate of this vector
+     */
+    getU() {
+        return this.n >= 4 ? this.get(3) : 0;
+    }
+
+    /**
      * Sets the i-th coordinate to the given v value
      * 
      * @param i 
@@ -325,6 +332,32 @@ class Vector {
             break;
         }
         return new Vector(Matrix.mult(M, this.toMatrix()).col(0));
+    }
+
+    /**
+     * Rotate the given point p according to the given q1, q2 cuaternions
+     * 
+     * @param q1 4D vector - first quaternion of the rotation
+     * @param p  4D point  - to be rotated
+     * @param q2 4D vector - second quaternion of the rotation
+     */
+    static QuatRot(q1, p, q2) {
+        return Vector.QuatMult(Vector.QuatMult(q1, p), q2);
+    }
+
+    /**
+     * Return a new vector result of multiplying the given quaternions
+     * 
+     * @param q1 4D vector - first quaternion of the multiplication
+     * @param q2 4D vector - second quaternion of the multiplication
+     */
+    static QuatMult(q1, q2) {
+        q1 = q1.data;
+        q2 = q2.data;
+        return new Vector([q1[0]*q2[0] - q1[1]*q2[1] - q1[2]*q2[2] - q1[3]*q2[3], //u
+                           q1[0]*q2[1] + q1[1]*q2[0] + q1[2]*q2[3] - q1[3]*q2[2], //x
+                           q1[0]*q2[2] - q1[1]*q2[3] + q1[2]*q2[0] + q1[3]*q2[1], //y
+                           q1[0]*q2[3] + q1[1]*q2[2] - q1[2]*q2[1] + q1[3]*q2[0]]); //z        
     }
 
     /**

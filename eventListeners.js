@@ -24,6 +24,7 @@ function mouseWheel(event) {
 
 function keyPressed() {
   UI.keyPressed();
+  if(keyCode == 82) rotation = !rotation; // R
 }
 
 function keyTyped() {
