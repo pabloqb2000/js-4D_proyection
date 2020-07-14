@@ -8,12 +8,14 @@ Inside the page you can change:
 - Whether to show the points/lines/polygons
 - The camera position and rotation
 ## Controls
+##### Movement
 You can move arround with the following keys:
 - W/S - 3rd axis
 - A/D - 1st axis
 - Q/E - 4th axis
 - SPACE/SHIFT - 2nd axis
-YOu can rotate arround with:
+##### Rotation
+You can rotate arround with:
 - Mouse X axis: 2nd axis
 - Mouse Y axis: 3rd axis
 - LEFT/RIGHT ARROW: 1st axis
