@@ -20,6 +20,8 @@ You can rotate arround with:
 - Mouse Y axis: 3rd axis
 - LEFT/RIGHT ARROW: 1st axis
 - UP/DOWN ARROW: 4th axis
+- R: Stop/activate object rotation
+- 1-4: Rotation of the object arround the 4 axis respectively
 ## Screenshot
 <img src="imgs/screenshot01.png"></img>
 ## References
